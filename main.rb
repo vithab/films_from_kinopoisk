@@ -1,10 +1,9 @@
 require_relative 'lib/film'
+require_relative 'lib/film_collection'
 require "nokogiri"
 require 'open-uri'
 
-films =[]
-
-films = Film.from_list
+films = FilmCollection.from_list
 
 puts "Список режиссеров:"
 directors = films.map { |x| x.director }.uniq
