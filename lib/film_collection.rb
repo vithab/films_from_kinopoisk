@@ -16,11 +16,24 @@ class FilmCollection
       films << Film.new(title_parse, director_parse, year_parse)
     end
 
-    films
+    new(films)
   end
 
   def initialize(films)
     @films = films
+  end
+
+  def director_list
+    films.map { |x| x.director }.uniq
+  end
+
+  # метод выбора (user_choice - 1) для выбора из массива
+  def by_user_choice(user_choice)
+    director_list[user_choice - 1]
+  end
+
+  def film_choice(chosen_director)
+    films.select { |x| x.director == chosen_director }.sample
   end
 
   def to_s
